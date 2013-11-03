@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <script type="text/javascript">
+                        <!--
+                        var editableDocument = null;
+
+                        window.onload = function()
+                        {
+                                    editableDocument = document.getElementById("iframe01").contentDocument;
+                                        editableDocument.designMode = "on";
+                                            editableDocument.addEventListener("keyup", showText, true);
+                                    }
+
+                                    function showText(event)
+                                    {
+                                                document.getElementById("textarea01").value = document.getElementById("iframe01").contentWindow.document.body.innerHTML;
+                                        }
+
+                                        function setDesign()
+                                        {
+                                                    document.getElementById("iframe01").contentWindow.document.body.innerHTML = document.getElementById("textarea01").value;
+                                            }
+                                            //-->
+                                    </script>
+                            </head>
+                            <body>
+                                    <input type="button" onclick="editableDocument.execCommand('backColor',false,color)"    value="選択色"/><!-- =hiliteColor -->
+                                    <input type="button" onclick="editableDocument.execCommand('bold',false,null)"          value="太字"/>
+                                    <input type="button" onclick="editableDocument.execCommand('createLink',false,null)"    value="リンク"/>
+                                    <input type="button" onclick="editableDocument.execCommand('fontName',false,null)"      value="フォント名"/>
+                                    <input type="button" onclick="editableDocument.execCommand('fontSize',false,null)"      value="フォントサイズ"/>
+                                    <input type="button" onclick="editableDocument.execCommand('foreColor',false,null)"     value="文字色" />
+                                    <input type="button" onclick="editableDocument.execCommand('hiliteColor',false,null)"   value="選択色" />
+                                    <input type="button" onclick="editableDocument.execCommand('italic',false,null)"        value="斜体" />
+                                    <input type="button" onclick="editableDocument.execCommand('removeFormat',false,null)"  value="解除"/>
+                                    <input type="button" onclick="editableDocument.execCommand('strikethrough',false,null)" value="取消線" />
+                                    <input type="button" onclick="editableDocument.execCommand('subscript',false,null)"     value="下付き"/>
+                                    <input type="button" onclick="editableDocument.execCommand('superscript',false,null)"   value="上付き"/>
+                                    <input type="button" onclick="editableDocument.execCommand('underline',false,null)"     value="下線" />
+                                    <input type="button" onclick="editableDocument.execCommand('unlink',false,null)"        value="リンク解除" />
+
+
+                                    <input type="button" onclick="editableDocument.execCommand('delete',false,null)"                  value="削除"/>
+                                    <input type="button" onclick="editableDocument.execCommand('formatBlock',false, format)"          value="フォーマット"/>
+                                    <input type="button" onclick="editableDocument.execCommand('forwardDelete',false,null)"           value="一字消" />
+                                    <input type="button" onclick="editableDocument.execCommand('indent',false,null)"                  value="インデント"/>
+                                    <input type="button" onclick="editableDocument.execCommand('insertHorizontalRule',false,null)"    value="水平線"/>
+                                    <input type="button" onclick="editableDocument.execCommand('insertHTML',false,null)"              value="HTML"/>
+                                    <input type="button" onclick="editableDocument.execCommand('insertImage',false,null)"             value="画像挿入"/>
+                                    <input type="button" onclick="editableDocument.execCommand('insertLineBreak',false,null)"         value="改行"/>
+                                    <input type="button" onclick="editableDocument.execCommand('insertOrderedList',false,null)"       value="順序リスト" />
+                                    <input type="button" onclick="editableDocument.execCommand('insertParagraph',false,null)"         value="章" />
+                                    <input type="button" onclick="editableDocument.execCommand('insertText',false,null)"              value="テキスト" />
+                                    <input type="button" onclick="editableDocument.execCommand('insertUnorderedList',false,null)"     value="順序なしリスト" />
+                                    <input type="button" onclick="editableDocument.execCommand('justifyCenter',false,null)"           value="中央"/>
+                                    <input type="button" onclick="editableDocument.execCommand('justifyFull',false,null)"             value="幅" />
+                                    <input type="button" onclick="editableDocument.execCommand('justifyLeft',false,null)"             value="左" />
+                                    <input type="button" onclick="editableDocument.execCommand('justifyRight',false,null)"            value="右" />
+                                    <input type="button" onclick="editableDocument.execCommand('outdent',false,null)"                 value=""/>
+
+
+                                    <input type="button" onclick="editableDocument.execCommand('copy',false,null)"                    value="コピー" />
+                                    <input type="button" onclick="editableDocument.execCommand('cut',false,null)"                     value="切り取り" />
+                                    <input type="button" onclick="editableDocument.execCommand('defaultParagraphSeparator',false,null)" value="改ページ" />
+                                    <input type="button" onclick="editableDocument.execCommand('paste',false,null)"                   value="貼付" />
+                                    <input type="button" onclick="editableDocument.execCommand('redo',false,null)"                    value="やり直し" />
+                                    <input type="button" onclick="editableDocument.execCommand('selectAll',false,null)"               value="全選択" />
+                                    <input type="button" onclick="editableDocument.execCommand('styleWithCSS',false,null)"            value="css" />
+                                    <input type="button" onclick="editableDocument.execCommand('undo',false,null)"                    value="undo" />
+                                    <input type="button" onclick="editableDocument.execCommand('useCSS',false,nul)"                   value="use css" />
+
+                                    <input type="button" value="insertOrderedList" onclick="editableDocument.execCommand('insertOrderedList', false, null);" />
+
+                                    <input type="button" value="undo" onclick="editableDocument.execCommand('undo', false, null);" />
+                                    <input type="button" value="redo" onclick="editableDocument.execCommand('redo', false, null);" />
+
+                                    <iframe id="iframe01"></iframe>
+
+                                    <textarea id="textarea01" name="textarea01" onKeyup="setDesign();"></textarea>
+
+                            </body>
+                    </html>

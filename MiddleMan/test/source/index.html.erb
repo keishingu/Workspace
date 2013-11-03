@@ -1,0 +1,643 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no">
+  <title>かんたんなおりがみ</title>
+	<% require 'json' %>
+	<% data = "" %>
+	<% open("js/data.json"){|fp| data = JSON.parse(fp.read)} %>
+	<%= data %>
+  <link rel="stylesheet" href="css/jquery.mobile-1.1.1.min.css" />
+  <!--<link rel="stylesheet" href="css/Halloween.min.css" />-->
+  <style type="text/css">
+
+  body {
+    /* Setting body margins to 0 to have proper positioning of #container div */
+    margin: 0;
+}
+
+/* #container div with absolute position and 100% width and height so it takes up whole window */
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+</style>
+<link rel="stylesheet" href="css/style.css"></style>
+<script src="js/jquery-1.8.1.min.js"></script>
+<script src="js/handlebars.js"></script>
+<script src="js/data.js"></script>
+<script type="text/javascript">
+$(document).one("mobileinit", function () {
+
+                                    // Setting #container div as a jqm pageContainer
+                                    $.mobile.pageContainer = $('#container');
+                                    
+                                    // Setting default page transition to slide
+                                    $.mobile.defaultPageTransition = 'slide';
+                                    
+                                });
+</script>
+<script src="js/jquery.mobile-1.1.1.min.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/jquery.mobile.iscroll.js"></script>
+<script src="js/flipsnap.min.js"></script>
+<!--<script>
+$(document).on('mobileinit', function(){
+   $.mobile.ajaxEnabled = false;
+});
+</script>
+<script>
+$(document).delegate('a', 'vclick', function(e){
+   e.preventDefault();
+   var link = $(this);
+   $.mobile.changePage(link.attr('href'), {
+       transition: link.jqmData('transition')
+   });
+});
+</script>
+<script>
+$(document).on('a', 'vclick', function(e){
+   e.preventDefault();
+   $.mobile.changePage($(this).jqmData('href') ||
+       $(this).attr('href'), {
+           transition: link.jqmData('transition')
+       });
+});
+</script>-->
+</head>
+
+<body>
+
+    <div id="container"/><!--おまじない-->
+
+    <div data-role="page" id="top" data-theme="c" data-iscroll="enable">
+     <div data-role="header" data-theme="c">
+        <a href="#infomation" data-transition="flip" >i</a>
+        <h1>かんたんなおりがみ<%= data[1] %></h1>
+    </div>
+    <div data-role="content">
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <a href="#pumpkin"><img src="img/pumpkin-12.png"><br><span>かぼちゃのおばけ<span></a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#ghost"><img src="img/ghost-11.png"><br><span>おばけ<span></a></a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#grave"><img src="img/grave-10.png"><br><span>はか<span></a>
+                </div>
+                <div class="ui-block-a">
+                    <a href="#frankenstein"><img src="img/frankenstein-09.png"><br><span>ふらんけん<span></a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#witch"><img src="img/witch-09.png"><br><span>まじょ<span></a></a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#dracula"><img src="img/dracula-11.png"><br><span>どらきゅら<span></a>
+                </div>
+                <div class="ui-block-a">
+                    <a href="#bat"><img src="img/bat-08.png"><br><span>こうもり<span></a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#skull"><img src="img/skull-10.png"><br><span>どくろ<span></a></a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#church"><img src="img/church-19.png"><br><span>きょうかい<span></a>
+                </div>
+                        <!--
+                        <div class="ui-block-a">
+                            <a href="#tadpole"><img src="img/tadpole6.png"><br><span>おたまじゃくし<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#mouse"><img src="img/mouse6.png"><br><span>ねずみのかお<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#house"><img src="img/house8.png"><br><span>いえ<span></a>
+                        </div>
+                        <div class="ui-block-a">
+                            <a href="#tadpole"><img src="img/tadpole6.png"><br><span>おたまじゃくし<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#mouse"><img src="img/mouse6.png"><br><span>ねずみのかお<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#house"><img src="img/house8.png"><br><span>いえ<span></a>
+                        </div>
+                    -->
+                </div>
+            </div>
+        </div>
+            <!--
+            <div data-role="footer" data-position="fixed" data-update-page-padding="false">
+                <h4></h4>
+                <a href="#infomation" data-transition="flip" class="ui-btn-right">i</a>
+            </div>
+        -->
+    </div>
+
+    <div data-role="page" id="infomation" data-theme="c" data-iscroll="enable">
+     <div data-role="header" data-theme="c">
+        <a href="#top" data-transition="flip">もどる</a>
+        <h1>このアプリについて</h1>
+    </div>
+    <div data-role="content" >
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="false"><a>おりがみくらぶ</a></li>
+                <li data-icon="false"><a rel="external" target="_blank" href="http://www.origami-club.com">http://www.origami-club.com</a></li>
+                <li data-icon="false"><a>株式会社CityPlan</a></li>
+                <li data-icon="false"><a>新宮文明</a></li>
+            </ul>
+                <!--
+                <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+                    <legend>フォント:</legend>
+                    <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" data-mini="true"/>
+                    <label for="radio-choice-1"><font face="HiraKakuProN-W3">ゴシック</font></label>
+                    <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  data-mini="true"/>
+                    <label for="radio-choice-2"><font face="HiraMinProN-W3">　明朝　</font></label>
+                </fieldset>
+                
+                <label for="flip-a">ふりがな:</label>
+                <select name="slider" id="flip-a" data-role="slider" onChange="alert('aaa')">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+            -->
+        </div>
+    </div>            
+</div>
+
+<div data-role="page" id="church" data-theme="c" data-iscroll="enable">
+    <div data-role="header" data-theme="c">
+        <a href="#top" data-rel="back">もどる</a>
+        <h1>きょうかい</h1>
+    </div>
+    <div data-role="content">
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <div class="viewport">
+                <div class="flipsnap">
+                    <div class="item"><img src="img/church-01.png"></div>
+                    <div class="item"><img src="img/church-02.png"></div>
+                    <div class="item"><img src="img/church-03.png"></div>
+                    <div class="item"><img src="img/church-04.png"></div>
+                    <div class="item"><img src="img/church-05.png"></div>
+                    <div class="item"><img src="img/church-06.png"></div>
+                    <div class="item"><img src="img/church-07.png"></div>
+                    <div class="item"><img src="img/church-08.png"></div>
+                    <div class="item"><img src="img/church-09.png"></div>
+                    <div class="item"><img src="img/church-10.png"></div>
+                    <div class="item"><img src="img/church-11.png"></div>
+                    <div class="item"><img src="img/church-12.png"></div>
+                    <div class="item"><img src="img/church-13.png"></div>
+                    <div class="item"><img src="img/church-14.png"></div>
+                    <div class="item"><img src="img/church-15.png"></div>
+                    <div class="item"><img src="img/church-16.png"></div>
+                    <div class="item"><img src="img/church-17.png"></div>
+                    <div class="item"><img src="img/church-18.png"></div>
+                    <div class="item"><img src="img/church-19.png"></div>
+                </div>
+                <div class="text">
+                    <span class="current">①はんぶんに おる</span>
+                    <span>②はんぶんに おる</span>
+                    <span>③↑から ふくろを ひらく</span>
+                    <span>④ふくろを つぶす</span>
+                    <span>⑤うらがえす</span>
+                    <span>⑥↑から ふくろを ひらいて つぶす</span>
+                    <span>⑦てんせんで まえに おる うらも おなじ</span>
+                    <span>⑧おって おりめをつけて もどす</span>
+                    <span>⑨↑から ふくろを ひらいて つぶす</span>
+                    <span>⑩てんせんで うちがわに おる</span>
+                    <span>⑪うらがえす</span>
+                    <span>⑫てんせんで おる</span>
+                    <span>⑬おって おりめをつけて もどす</span>
+                    <span>⑭↑から ふくろを ひらいて つぶす</span>
+                    <span>⑮てんせんで うちがわに おる</span>
+                    <span>⑯おって おりめをつけて もどす</span>
+                    <span>⑰↑から ふくろを ひらいて つぶす</span>
+                    <span>⑱てんせんで おる</span>
+                    <span>⑲できあがり</span>
+                </div>
+                <div class="pointer">
+                    <span class="current"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="skull" data-theme="c" data-iscroll="enable">
+    <div data-role="header" data-theme="c">
+        <a href="#top" data-rel="back">もどる</a>
+        <h1>どくろ</h1>
+    </div>
+    <div data-role="content">
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <div class="viewport">
+                <div class="flipsnap">
+                    <div class="item"><img src="img/skull-01.png"></div>
+                    <div class="item"><img src="img/skull-02.png"></div>
+                    <div class="item"><img src="img/skull-03.png"></div>
+                    <div class="item"><img src="img/skull-04.png"></div>
+                    <div class="item"><img src="img/skull-05.png"></div>
+                    <div class="item"><img src="img/skull-06.png"></div>
+                    <div class="item"><img src="img/skull-07.png"></div>
+                    <div class="item"><img src="img/skull-08.png"></div>
+                    <div class="item"><img src="img/skull-09.png"></div>
+                    <div class="item"><img src="img/skull-10.png"></div>
+                </div>
+                <div class="text">
+                    <span class="current">①たてよこ はんぶんに おって もどす</span>
+                    <span>②まんなかに むけて てんせんで おる</span>
+                    <span>③てんせんで おる</span>
+                    <span>④てんせんで だんおり</span>
+                    <span>⑤うらがえす</span>
+                    <span>⑥てんせんで おる</span>
+                    <span>⑦てんせんで おる</span>
+                    <span>⑧てんせんで おる</span>
+                    <span>⑨てんせんで おる</span>
+                    <span>⑩できあがり</span>
+                </div>
+                <div class="pointer">
+                    <span class="current"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>            
+</div>
+
+<div data-role="page" id="bat" data-theme="c" data-iscroll="enable">
+    <div data-role="header" data-theme="c">
+        <a href="#top" data-rel="back">もどる</a>
+        <h1>こうもり</h1>
+    </div>
+    <div data-role="content">
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <div class="viewport">
+                <div class="flipsnap">
+                    <div class="item"><img src="img/bat-01.png"></div>
+                    <div class="item"><img src="img/bat-02.png"></div>
+                    <div class="item"><img src="img/bat-03.png"></div>
+                    <div class="item"><img src="img/bat-04.png"></div>
+                    <div class="item"><img src="img/bat-05.png"></div>
+                    <div class="item"><img src="img/bat-06.png"></div>
+                    <div class="item"><img src="img/bat-07.png"></div>
+                    <div class="item"><img src="img/bat-08.png"></div>
+                </div>
+                <div class="text">
+                    <span class="current">①はんぶんに おって おりめをつけて もどす</span>
+                    <span>②はんぶんに おる</span>
+                    <span>③てんせんで うしろに おる</span>
+                    <span>④てんせんで だんおり</span>
+                    <span>⑤おって おりめをつけて もどす</span>
+                    <span>⑥うらがえす</span>
+                    <span>⑦てんせんで おる</span>
+                    <span>⑧できあがり</span>
+                </div>
+                <div class="pointer">
+                    <span class="current"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="dracula" data-theme="c" data-iscroll="enable">
+    <div data-role="header" data-theme="c">
+        <a href="#top" data-rel="back">もどる</a>
+        <h1>どらきゅら</h1>
+    </div>
+    <div data-role="content">
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <div class="viewport">
+                <div class="flipsnap">
+                    <div class="item"><img src="img/dracula-01.png"></div>
+                    <div class="item"><img src="img/dracula-02.png"></div>
+                    <div class="item"><img src="img/dracula-03.png"></div>
+                    <div class="item"><img src="img/dracula-04.png"></div>
+                    <div class="item"><img src="img/dracula-05.png"></div>
+                    <div class="item"><img src="img/dracula-06.png"></div>
+                    <div class="item"><img src="img/dracula-07.png"></div>
+                    <div class="item"><img src="img/dracula-08.png"></div>
+                    <div class="item"><img src="img/dracula-09.png"></div>
+                    <div class="item"><img src="img/dracula-10.png"></div>
+                    <div class="item"><img src="img/dracula-11.png"></div>
+                </div>
+                <div class="text">
+                    <span class="current">①たてよこ はんぶんにおって もどす</span>
+                    <span>②てんせんで おる</span>
+                    <span>③てんせんで おる</span>
+                    <span>④うらがえす</span>
+                    <span>⑤てんせんで おる</span>
+                    <span>⑥てんせんで おる</span>
+                    <span>⑦おって おりめをつけて もどす</span>
+                    <span>⑧↑から ふくろを ひらいて つぶす</span>
+                    <span>⑨てんせんで おる</span>
+                    <span>⑩うらがえす</span>
+                    <span>⑪かおを かいて できあがり</span>
+                </div>
+                <div class="pointer">
+                    <span class="current"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="witch" data-theme="c" data-iscroll="enable">
+    <div data-role="header" data-theme="c">
+        <a href="#top" data-rel="back">もどる</a>
+        <h1>まじょ</h1>
+    </div>
+    <div data-role="content">
+        <div data-iscroll="scroller" style="height: 100%; width=100%;">
+            <div class="viewport">
+                <div class="flipsnap">
+                    <div class="item"><img src="img/witch-01.png"></div>
+                    <div class="item"><img src="img/witch-02.png"></div>
+                    <div class="item"><img src="img/witch-03.png"></div>
+                    <div class="item"><img src="img/witch-04.png"></div>
+                    <div class="item"><img src="img/witch-05.png"></div>
+                    <div class="item"><img src="img/witch-06.png"></div>
+                    <div class="item"><img src="img/witch-07.png"></div>
+                    <div class="item"><img src="img/witch-08.png"></div>
+                    <div class="item"><img src="img/witch-09.png"></div>
+                </div>
+                <div class="text">
+                    <span class="current">①はんぶんに おって おりめをつけて もどす</span>
+                    <span>②まんなかに むけて てんせんで おる</span>
+                    <span>③てんせんで おる</span>
+                    <span>④てんせんで おる</span>
+                    <span>⑤うらがえす</span>
+                    <span>⑥てんせんで おる</span>
+                    <span>⑦↑から ふくろを ひらいて つぶす</span>
+                    <span>⑧うらがえす</span>
+                    <span>⑨かおをかいて できあがり</span>
+                </div>
+                <div class="pointer">
+                    <span class="current"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="frankenstein" data-theme="c" data-iscroll="enable">
+ <div data-role="header" data-theme="c">
+    <a href="#top" data-rel="back">もどる</a>
+    <h1>ふらんけんしゅたいん</h1>
+</div>
+<div data-role="content">
+    <div data-iscroll="scroller" style="height: 100%; width=100%;">
+        <div class="viewport">
+           <div class="flipsnap">
+              <div class="item"><img src="img/frankenstein-01.png"></div>
+              <div class="item"><img src="img/frankenstein-02.png"></div>
+              <div class="item"><img src="img/frankenstein-03.png"></div>
+              <div class="item"><img src="img/frankenstein-04.png"></div>
+              <div class="item"><img src="img/frankenstein-05.png"></div>
+              <div class="item"><img src="img/frankenstein-06.png"></div>
+              <div class="item"><img src="img/frankenstein-07.png"></div>
+              <div class="item"><img src="img/frankenstein-08.png"></div>
+              <div class="item"><img src="img/frankenstein-09.png"></div>
+          </div>
+          <div class="text">
+              <span class="current">①はんぶんに おって おりめをつけて もどす</span>
+              <span>②てんせんで おる</span>
+              <span>③てんせんで おる</span>
+              <span>④てんせんで おる</span>
+              <span>⑤てんせんで おる</span>
+              <span>⑥てんせんで おる</span>
+              <span>⑦てんせんで うしろに おる</span>
+              <span>⑧てんせんで うしろに おる</span>
+              <span>⑨かおをかいて できあがり</span>
+          </div>
+          <div class="pointer">
+              <span class="current"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+<div data-role="page" id="grave" data-theme="c" data-iscroll="enable">
+ <div data-role="header" data-theme="c">
+    <a href="#top" data-rel="back">もどる</a>
+    <h1>はか</h1>
+</div>
+<div data-role="content">
+    <div data-iscroll="scroller" style="height: 100%; width=100%;">
+        <div class="viewport">
+           <div class="flipsnap">
+              <div class="item"><img src="img/grave-01.png"></div>
+              <div class="item"><img src="img/grave-02.png"></div>
+              <div class="item"><img src="img/grave-03.png"></div>
+              <div class="item"><img src="img/grave-04.png"></div>
+              <div class="item"><img src="img/grave-05.png"></div>
+              <div class="item"><img src="img/grave-06.png"></div>
+              <div class="item"><img src="img/grave-07.png"></div>
+              <div class="item"><img src="img/grave-08.png"></div>
+              <div class="item"><img src="img/grave-09.png"></div>
+              <div class="item"><img src="img/grave-10.png"></div>
+          </div>
+          <div class="text">
+              <span class="current">①はんぶんに おって おりめをつけて もどす</span>
+              <span>②まんなかに むけて てんせんで おる</span>
+              <span>③てんせんで おる</span>
+              <span>④てんせんで おる</span>
+              <span>⑤おって おりめをつけて もどす</span>
+              <span>⑥てんせんで おる</span>
+              <span>⑦てんせんで おる</span>
+              <span>⑧てんせんで うしろに おる</span>
+              <span>⑨てんせんで うしろに おる</span>
+              <span>⑩できあがり</span>
+          </div>
+          <div class="pointer">
+              <span class="current"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+      </div>
+  </div>
+</div>            
+</div>
+
+<div data-role="page" id="ghost" data-theme="c" data-iscroll="enable">
+ <div data-role="header" data-theme="c">
+    <a href="#top" data-rel="back">もどる</a>
+    <h1>おばけ</h1>
+</div>
+<div data-role="content">
+    <div data-iscroll="scroller" style="height: 100%; width=100%;">
+        <div class="viewport">
+           <div class="flipsnap">
+              <div class="item"><img src="img/ghost-01.png"></div>
+              <div class="item"><img src="img/ghost-02.png"></div>
+              <div class="item"><img src="img/ghost-03.png"></div>
+              <div class="item"><img src="img/ghost-04.png"></div>
+              <div class="item"><img src="img/ghost-05.png"></div>
+              <div class="item"><img src="img/ghost-06.png"></div>
+              <div class="item"><img src="img/ghost-07.png"></div>
+              <div class="item"><img src="img/ghost-08.png"></div>
+              <div class="item"><img src="img/ghost-09.png"></div>
+              <div class="item"><img src="img/ghost-10.png"></div>
+              <div class="item"><img src="img/ghost-11.png"></div>
+          </div>
+          <div class="text">
+              <span class="current">①はんぶんにおって おりめをつけて もどす</span>
+              <span>②まんなかに むけて てんせんで おる</span>
+              <span>③まんなかに むけて てんせんで おる</span>
+              <span>④↑から ふくろを ひらく</span>
+              <span>⑤ふくろを つぶす　ひだりも おなじ</span>
+              <span>⑥てんせんで うしろに おる</span>
+              <span>⑦てんせんで おる</span>
+              <span>⑧てんせんで うしろに おる</span>
+              <span>⑨てんせんで うしろに おる</span>
+              <span>⑩てんせんで うしろに おる</span>
+              <span>⑪かおを かいて できあがり</span>
+          </div>
+          <div class="pointer">
+              <span class="current"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+<div data-role="page" id="pumpkin" data-theme="c" data-iscroll="enable">
+ <div data-role="header" data-theme="c">
+    <a href="#top" data-rel="back">もどる</a>
+    <h1>かぼちゃ</h1>
+</div>
+<div data-role="content">
+    <div data-iscroll="scroller" style="height: 100%; width=100%;">
+        <div class="viewport">
+           <div class="flipsnap">
+            <div class="item"><img src="img/pumpkin-01.png"></div>
+            <div class="item"><img src="img/pumpkin-02.png"></div>
+            <div class="item"><img src="img/pumpkin-03.png"></div>
+            <div class="item"><img src="img/pumpkin-04.png"></div>
+            <div class="item"><img src="img/pumpkin-05.png"></div>
+            <div class="item"><img src="img/pumpkin-06.png"></div>
+            <div class="item"><img src="img/pumpkin-07.png"></div>
+            <div class="item"><img src="img/pumpkin-08.png"></div>
+            <div class="item"><img src="img/pumpkin-09.png"></div>
+            <div class="item"><img src="img/pumpkin-10.png"></div>
+            <div class="item"><img src="img/pumpkin-11.png"></div>
+            <div class="item"><img src="img/pumpkin-12.png"></div>
+        </div>
+        <div class="text">
+          <span class="current">①はんぶんに おる</span>
+          <span>②はんぶんに おる</span>
+          <span>③↑から ふくろを ひらく</span>
+          <span>④ふくろを つぶす</span>
+          <span>⑤うらがえす</span>
+          <span>⑥↑から ふくろを ひらいて つぶす</span>
+          <span>⑦てんせんで うちがわに おる</span>
+          <span>⑧てんせんで うちがわに おる</span>
+          <span>⑨てんせんで うしろに おる</span>
+          <span>⑩てんせんで うしろに おる</span>
+          <span>⑪てんせんで うしろに おる</span>
+          <span>⑫かおを かいて できあがり</span>
+      </div>
+      <div class="pointer">
+          <span class="current"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

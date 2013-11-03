@@ -1,0 +1,39 @@
+{
+"title" : "かんたんなおりがみ",
+"content" : [
+		{
+			"name" : "おたまじゃくし",
+			"image": "img/tadpole6.png",
+			"folding" : [
+				{"img" : "tadpole1.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole2.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole3.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole4.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole5.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole6.png", "ja" : "はんぶんに おる"}
+			]
+		},
+		{
+			"name" : "ねずみのかお",
+			"folding" : [
+				{"img" : "tadpole1.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole2.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole3.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole4.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole5.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole6.png", "ja" : "はんぶんに おる"}
+			]
+		},
+		{
+			"name" : "おたまじゃくし",
+			"folding" : [
+				{"img" : "tadpole1.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole2.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole3.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole4.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole5.png", "ja" : "はんぶんに おる"},
+				{"img" : "tadpole6.png", "ja" : "はんぶんに おる"}
+			]
+		}
+	]
+}

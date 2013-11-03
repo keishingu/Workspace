@@ -1,0 +1,4 @@
+exec = require('child_process').exec
+
+task 'build', 'すべての.coffeeファイルをコンパイルします', (options) ->
+	exec "coffee -c *.coffee"

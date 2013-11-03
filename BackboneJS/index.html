@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Backbone.js</title>
+</head>
+<body>
+
+	<h1>Tasks</h1>
+	<div id="tasks">
+	</div>
+	<script type="text/template" id="task-template">
+		<input type="checkbox" class="toggle" <%= completed ? 'checked': ''%>>
+		<span class="delete">[x]</span>
+	</script>
+	<script src="js/underscore.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/backbone.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>

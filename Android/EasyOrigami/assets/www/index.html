@@ -1,0 +1,826 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no">
+                <title>かんたんなおりがみ</title>
+                <link rel="stylesheet" href="css/jquery.mobile-1.1.1.min.css" />
+                <style type="text/css">
+                    
+                    body {
+                        /* Setting body margins to 0 to have proper positioning of #container div */
+                        margin: 0;
+                    }
+                    
+                    /* #container div with absolute position and 100% width and height so it takes up whole window */
+                    #container {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                
+                </style>
+                <script src="js/jquery-1.8.1.min.js"></script>
+                <script type="text/javascript">
+                    $(document).one("mobileinit", function () {
+                                    
+                                    // Setting #container div as a jqm pageContainer
+                                    $.mobile.pageContainer = $('#container');
+                                    
+                                    // Setting default page transition to slide
+                                    $.mobile.defaultPageTransition = 'none';
+                                    
+                                    });
+                </script>
+                <script src="js/jquery.mobile-1.1.1.min.js"></script>
+                <script src="js/iscroll.js"></script>
+                <script src="js/jquery.mobile.iscroll.js"></script>
+                <script src="js/flipsnap.min.js"></script>
+                <!--<script>
+                 $(document).on('mobileinit', function(){
+                 $.mobile.ajaxEnabled = false;
+                 });
+                 </script>-->
+                <!--<script>
+                 $(document).delegate('a', 'vclick', function(e){
+                 e.preventDefault();
+                 var link = $(this);
+                 $.mobile.changePage(link.attr('href'), {
+                 transition: link.jqmData('transition')
+                 });
+                 });
+                 </script>-->
+                <!--<script>
+                    $(document).on('a', 'vclick', function(e){
+                                         e.preventDefault();
+                                         $.mobile.changePage($(this).jqmData('href') ||
+                                                             $(this).attr('href'), {
+                                                             transition: link.jqmData('transition')
+                                                             });
+                                         });
+                </script>-->
+                <style type="text/css">
+                    .ui-page {
+                        font-family: HiraKakuProN-W3
+                    }
+                    .ui-header {
+                        font-family: HiraKakuProN-W3;
+                    }
+                    .ui-btn-inner {
+                        font-family: HiraKakuProN-W3;
+                    }
+                    .ui-li {
+                        font-family: HiraKakuProN-W3;
+                    }
+                    /* jquery mobile */
+                    .ui-page {
+                        background-image: url('css/images/background.png');
+                        border: none;
+                    }
+                    .ui-content {
+                        margin:0px;
+                        padding: 0px;
+                        text-align: center;
+                    }
+                    #infomation .ui-content {
+                        padding: 15px;
+                        text-align: left;
+                    }
+                    #top .ui-body-c, .ui-body-c .ui-link, .ui-body-c .ui-link:visited {
+                        color: #000;
+                        display: inline-block;
+                        font-size:12.5px;
+                        font-weight: normal;
+                        text-align: center;
+                        text-decoration: none;
+                        //text-shadow: 0px 1px 0px #AAA;
+                        text-shadow: 1px 1px 0px #fff;
+                    }
+                    #top .ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-mini .ui-btn-inner {
+                        font-size: 15px;
+                    }
+                    #top .ui-bar-a .ui-shadow, .ui-bar-b .ui-shadow, .ui-bar-c .ui-shadow {
+                        box-shadow: none;
+                    }
+                    #top .ui-btn-up-c, #top .ui-btn-hover-c{
+                        border: none;
+                        background: none;
+                        background-image: none;
+                        text-shadow: 0 0px 6px #696969;
+                    }
+                    #top .ui-btn-inner {
+                        border-top: none;
+                        color: #FFFFFF;
+                        width: 10px;
+                    }
+                    .ui-bar-a {
+                        border: none;
+                        background: none;
+                    }
+                    .ui-btn-up-a, .ui-btn-hover-a {
+                        border: none;
+                        background: none;
+                        text-shadow: 0 0 3px #111;
+                    }
+                    .ui-btn-corner-all {
+                        border-radius: 0em;
+                    }
+                    .ui-footer .ui-btn-inner {
+                        font-size: 15px;
+                        padding: .55em 11px .5em;
+                    }
+                    .ui-header .ui-title {
+                        margin: .6em 5% .8em;
+                    }
+                    #top a {
+                        width:100%;
+                        max-width:320px;
+                    }
+                    #top img {
+                        //height: 106px;
+                        //width: 106px;
+                        width: 100%;
+                    }
+                    
+                    /* flipsnap */
+                    .viewport {
+                        width: 100%;
+                        //width: 320px;
+                        overflow: hidden;
+                        margin: 0 auto;
+                    }
+                    .flipsnap {
+                        width: 600%; /* 320px(item width) * 3(item count) */
+                        //width: 1920px; /* 320px(item width) * 3(item count) */
+                    }
+                    #goldfish .flipsnap {
+                        width: 700%; /* 320px(item width) * 3(item count) */
+                        //width: 2240px; /* 320px(item width) * 3(item count) */
+                    }
+                    #house .flipsnap, #car .flipsnap {
+                        width: 800%; /* 320px(item width) * 3(item count) */
+                        //width: 2560px; /* 320px(item width) * 3(item count) */
+                    }
+                    #mola .flipsnap {
+                        width: 1000%; /* 320px(item width) * 3(item count) */
+                        //width: 3200px; /* 320px(item width) * 3(item count) */
+                    }
+                    .item {
+                        position: relative;
+                        float: left;
+                        //width: 320px;
+                        width: 16.666%;
+                        //max-width:640px;
+                        //height: 320px;
+                        //height: 100%;
+                        font-size: 20px;
+                        //padding: 50px 0;
+                        //background: red;
+                        //border: 1px solid red;
+                        color: #666;
+                    }
+                    #goldfish .item {
+                        width: 14.2857%;
+                    }
+                    #house .item, #car .item {
+                        width: 12.5%;
+                    }
+                    #mola .item {
+                        width: 10%;
+                    }
+                    .item img {
+                        //height:320px;
+                        //height: 100%;
+                        //width: 320px;
+                        width:100%;
+                        max-width:640px;
+                    }
+                    .text span.current {
+                        display: inline-block;
+                    }
+                    .text span {
+                        display: none;
+                        //text-shadow: 0px 1px 0px #AAA;
+                        text-shadow: 1px 1px 0px #fff;
+                    }
+                    .pointer span.current {
+                        background: #89c3eb;
+                    }
+                    .pointer span {
+                        display: inline-block;
+                        width: 8px;
+                        height: 8px;
+                        //border-radius: 8px;
+                        border: 1px solid #D7D7D7;
+                        background: #FFFFFF;
+                        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+                    }
+                    /* for retina display */
+                    @media only screen and (-webkit-min-device-pixel-ratio: 2),(-webkit-min-device-pixel-ratio: 1.5){
+                        .ui-page{
+                            -webkit-background-size:50px 50px;
+                            background-image:url('css/images/background.png');
+                        }
+                    }
+                    </style>
+                </head>
+    
+	<body>
+        
+        <div id="container"/><!--おまじない-->
+		
+		<div data-role="page" id="top" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+                <a href="#infomation" data-transition="flip" >i</a>
+				<h1>かんたんなおりがみ</h1>
+			</div>
+            <div data-role="content">
+                <div data-iscroll="scroller" style="height: 100%; width=100%;">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <a href="#tadpole"><img src="img/tadpole6.png"><br><span>おたまじゃくし<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#mouse"><img src="img/mouse6.png"><br><span>ねずみのかお<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#house"><img src="img/house8.png"><br><span>いえ<span></a>
+                        </div>
+                        <div class="ui-block-a">
+                            <a href="#cat"><img src="img/cat6.png"><br><span>ねこのかお<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#dog"><img src="img/dog6.png"><br><span>いぬのかお<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#flog"><img src="img/flog6.png"><br><span>かえる<span></a>
+                        </div>
+                        <div class="ui-block-a">
+                            <a href="#goldfish"><img src="img/goldfish7.png"><br><span>きんぎょ<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#car"><img src="img/car8.png"><br><span>くるま<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#mola"><img src="img/mola10.png"><br><span>まんぼう<span></a>
+                        </div>
+                        <!--
+                        <div class="ui-block-a">
+                            <a href="#tadpole"><img src="img/tadpole6.png"><br><span>おたまじゃくし<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#mouse"><img src="img/mouse6.png"><br><span>ねずみのかお<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#house"><img src="img/house8.png"><br><span>いえ<span></a>
+                        </div>
+                        <div class="ui-block-a">
+                            <a href="#tadpole"><img src="img/tadpole6.png"><br><span>おたまじゃくし<span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#mouse"><img src="img/mouse6.png"><br><span>ねずみのかお<span></a></a>
+                        </div>
+                        <div class="ui-block-c">
+                            <a href="#house"><img src="img/house8.png"><br><span>いえ<span></a>
+                        </div>
+                         -->
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div data-role="footer" data-position="fixed" data-update-page-padding="false">
+                <h4></h4>
+                <a href="#infomation" data-transition="flip" class="ui-btn-right">i</a>
+            </div>
+            -->
+		</div>
+        
+		<div data-role="page" id="infomation" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+                <a href="#top" data-transition="flip">もどる</a>
+				<h1>このアプリについて</h1>
+			</div>
+            <div data-role="content" >
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+                <ul data-role="listview" data-inset="true">
+                    <li>おりがみくらぶ</li>
+                    <li data-icon="false"><a rel="external" target="_blank" href="http://www.origami-club.com">http://www.origami-club.com</a></li>
+                    <li>株式会社CityPlan</li>
+                    <li>新宮文明</li>
+                </ul>
+                <!--
+                <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+                    <legend>フォント:</legend>
+                    <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" data-mini="true"/>
+                    <label for="radio-choice-1"><font face="HiraKakuProN-W3">ゴシック</font></label>
+                    <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  data-mini="true"/>
+                    <label for="radio-choice-2"><font face="HiraMinProN-W3">　明朝　</font></label>
+                </fieldset>
+                
+                <label for="flip-a">ふりがな:</label>
+                <select name="slider" id="flip-a" data-role="slider" onChange="alert('aaa')">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+                -->
+            </div>
+            </div>            
+		</div>
+		
+		<div data-role="page" id="tadpole" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>おたまじゃくし</h1>
+			</div>
+            <div data-role="content">
+                <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/tadpole1.png"></div>
+						<div class="item"><img src="img/tadpole2.png"></div>
+						<div class="item"><img src="img/tadpole3.png"></div>
+						<div class="item"><img src="img/tadpole4.png"></div>
+						<div class="item"><img src="img/tadpole5.png"></div>
+						<div class="item"><img src="img/tadpole6.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おる</span>
+						<span>②はんぶんに おる</span>
+						<span>③↑から ふくろを ひらいて つぶす</span>
+						<span>④つぶしている ところ</span>
+						<span>⑤てんせんで うしろに おる</span>
+						<span>⑥めをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+                </div>
+				</div>
+			</div>
+            
+		</div>
+        
+        <div data-role="page" id="mouse" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>ねずみのかお</h1>
+			</div>			
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/mouse1.png"></div>
+						<div class="item"><img src="img/mouse2.png"></div>
+						<div class="item"><img src="img/mouse3.png"></div>
+						<div class="item"><img src="img/mouse4.png"></div>
+						<div class="item"><img src="img/mouse5.png"></div>
+						<div class="item"><img src="img/mouse6.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おって おりめをつけて もどす</span>
+						<span>②はんぶんに おる</span>
+						<span>③てんせんで おる</span>
+						<span>④てんせんで おる</span>
+						<span>⑤てんせんで うしろに おる</span>
+						<span>⑥かおをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+                </div>
+				</div>
+			</div>
+		</div>
+        
+        <div data-role="page" id="house" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>いえ</h1>
+			</div>
+			
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/house1.png"></div>
+						<div class="item"><img src="img/house2.png"></div>
+						<div class="item"><img src="img/house3.png"></div>
+						<div class="item"><img src="img/house4.png"></div>
+						<div class="item"><img src="img/house5.png"></div>
+						<div class="item"><img src="img/house6.png"></div>
+						<div class="item"><img src="img/house7.png"></div>
+						<div class="item"><img src="img/house8.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おって おりめをつけて もどす</span>
+						<span>②まんなかに むけて てんせんで おる</span>
+                        <span>③まんなかに むけて てんせんで おる</span>
+                        <span>④おったら もどす</span>
+						<span>⑤↑から ふくろを ひらく</span>
+						<span>⑥ふくろを つぶす</span>
+						<span>⑦てんせんで おる</span>
+						<span>⑧どあ と まどをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+                        <span></span>
+                        <span></span>
+					</div>
+				</div>
+                </div>
+            </div>
+		</div>
+        
+        <div data-role="page" id="cat" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>ねこのかお</h1>
+			</div>
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/cat1.png"></div>
+						<div class="item"><img src="img/cat2.png"></div>
+						<div class="item"><img src="img/cat3.png"></div>
+						<div class="item"><img src="img/cat4.png"></div>
+						<div class="item"><img src="img/cat5.png"></div>
+						<div class="item"><img src="img/cat6.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おる</span>
+						<span>②はんぶんに おって おりめをつけて もどす</span>
+						<span>③てんせんで おる</span>
+						<span>④てんせんで おる</span>
+						<span>⑤うらがえす</span>
+						<span>⑥かおをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+        
+        <div data-role="page" id="dog" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>いぬのかお</h1>
+			</div>
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/dog1.png"></div>
+						<div class="item"><img src="img/dog2.png"></div>
+						<div class="item"><img src="img/dog3.png"></div>
+						<div class="item"><img src="img/dog4.png"></div>
+						<div class="item"><img src="img/dog5.png"></div>
+						<div class="item"><img src="img/dog6.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おる</span>
+						<span>②はんぶんに おって おりめをつけて もどす</span>
+						<span>③てんせんで おる</span>
+						<span>④てんせんで おる</span>
+						<span>⑤てんせんで おる</span>
+						<span>⑥かおをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+        
+        <div data-role="page" id="flog" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>かえる</h1>
+			</div>
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/flog1.png"></div>
+						<div class="item"><img src="img/flog2.png"></div>
+						<div class="item"><img src="img/flog3.png"></div>
+						<div class="item"><img src="img/flog4.png"></div>
+						<div class="item"><img src="img/flog5.png"></div>
+						<div class="item"><img src="img/flog6.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おって おりめをつけて もどす</span>
+						<span>②はんぶんに おる</span>
+						<span>③⇒から ふくろを ひらいて つぶす</span>
+						<span>④むきを かえる</span>
+						<span>⑤てんせんで おる</span>
+						<span>⑥めをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+        
+        <div data-role="page" id="goldfish" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>きんぎょ</h1>
+			</div>
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/goldfish1.png"></div>
+						<div class="item"><img src="img/goldfish2.png"></div>
+						<div class="item"><img src="img/goldfish3.png"></div>
+						<div class="item"><img src="img/goldfish4.png"></div>
+						<div class="item"><img src="img/goldfish5.png"></div>
+						<div class="item"><img src="img/goldfish6.png"></div>
+						<div class="item"><img src="img/goldfish7.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おる</span>
+						<span>②てんせんで おる</span>
+                        <span>③てんせんで うしろに おる</span>
+                        <span>④てんせんで おる</span>
+						<span>⑤むきを かえる</span>
+						<span>⑥てんせんで うしろに おる</span>
+						<span>⑦めをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+                        <span></span>
+					</div>
+				</div>
+                </div>
+			</div>            
+		</div>
+        
+        <div data-role="page" id="car" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>くるま</h1>
+			</div>
+			<div data-role="content">
+            <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/car1.png"></div>
+						<div class="item"><img src="img/car2.png"></div>
+						<div class="item"><img src="img/car3.png"></div>
+						<div class="item"><img src="img/car4.png"></div>
+						<div class="item"><img src="img/car5.png"></div>
+						<div class="item"><img src="img/car6.png"></div>
+						<div class="item"><img src="img/car7.png"></div>
+						<div class="item"><img src="img/car8.png"></div>
+					</div>
+					<div class="text">
+						<span class="current" style="font-size:12px">①たて よこ はんぶんにおって おりめをつけて もどす</span>
+						<span>②てんせんで おる</span>
+                        <span>③てんせんで おる</span>
+                        <span>④てんせんで おる</span>
+						<span>⑤てんせんで おる</span>
+						<span>⑥てんせんで おる</span>
+						<span>⑦うらがえす</span>
+						<span>⑧どあをかいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+                        <span></span>
+                        <span></span>
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+        
+        <div data-role="page" id="mola" data-theme="c" data-iscroll="enable">
+			<div data-role="header" data-theme="c">
+				<a href="#top" data-rel="back">もどる</a>
+				<h1>まんぼう</h1>
+			</div>
+			<div data-role="content">
+                <div data-iscroll="scroller" style="height: 100%; width=100%;">
+				<div class="viewport">
+					<div class="flipsnap">
+						<div class="item"><img src="img/mola1.png"></div>
+						<div class="item"><img src="img/mola2.png"></div>
+						<div class="item"><img src="img/mola3.png"></div>
+						<div class="item"><img src="img/mola4.png"></div>
+						<div class="item"><img src="img/mola5.png"></div>
+						<div class="item"><img src="img/mola6.png"></div>
+						<div class="item"><img src="img/mola7.png"></div>
+						<div class="item"><img src="img/mola8.png"></div>
+						<div class="item"><img src="img/mola9.png"></div>
+						<div class="item"><img src="img/mola10.png"></div>
+					</div>
+					<div class="text">
+						<span class="current">①はんぶんに おって おりめをつけて もどす</span>
+						<span>②まんなかに むけて てんせんで おる</span>
+                        <span>③まんなかに むけて てんせんで おる</span>
+                        <span>④おったら もどす</span>
+						<span>⑤↑から ふくろを ひらく</span>
+						<span>⑥ふくろを つぶす</span>
+						<span>⑦むきを かえる</span>
+                        <span>⑧まんなかに むけて てんせんで おる</span>
+                        <span>⑨うらがえす</span>
+						<span>⑩めを かいて できあがり</span>
+					</div>
+					<div class="pointer">
+						<span class="current"></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+        
+        <!--<script>
+         $("#radio-choice-1").click(function(){
+         $(".ui-page").css("font-family","HiraKakuProN-W3");
+         $(".ui-header").css("font-family","HiraKakuProN-W3");
+         $(".ui-btn-inner").css("font-family","HiraKakuProN-W3");
+         $(".ui-li").css("font-family","HiraKakuProN-W3");
+         });
+         $("#radio-choice-2").click(function(){
+         $(".ui-page").css("font-family","HiraMinProN-W3");
+         $(".ui-header").css("font-family","HiraMinProN-W3");
+         $(".ui-btn-inner").css("font-family","HiraMinProN-W3");
+         $(".ui-li").css("font-family","HiraMinProN-W3");
+         });
+         </script>-->
+		<script>
+            var $width = $(window).width();
+            //var $width = 320;
+			var $tadpole_pointer = $('#tadpole .pointer span');
+			var $tadpole_text = $('#tadpole .text span');
+			var tadpole_flipsnap = Flipsnap('#tadpole .flipsnap', {
+                                            distance: $width
+                                            });
+			tadpole_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                      $tadpole_pointer.filter('#tadpole .current').removeClass('current');
+                                                      $tadpole_pointer.eq(tadpole_flipsnap.currentPoint).addClass('current');
+                                                      $tadpole_text.filter('#tadpole .current').removeClass('current');
+                                                      $tadpole_text.eq(tadpole_flipsnap.currentPoint).addClass('current');
+                                                      }, false);
+        </script>
+        <script>
+            var $mouse_pointer = $('#mouse .pointer span');
+			var $mouse_text = $('#mouse .text span');
+			var mouse_flipsnap = Flipsnap('#mouse .flipsnap', {
+                                          distance: $width
+                                          });
+			mouse_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                    $mouse_pointer.filter('#mouse .current').removeClass('current');
+                                                    $mouse_pointer.eq(mouse_flipsnap.currentPoint).addClass('current');
+                                                    $mouse_text.filter('#mouse .current').removeClass('current');
+                                                    $mouse_text.eq(mouse_flipsnap.currentPoint).addClass('current');
+                                                    }, false);
+        </script>
+        <script>
+            var $house_pointer = $('#house .pointer span');
+			var $house_text = $('#house .text span');
+			var house_flipsnap = Flipsnap('#house .flipsnap', {
+                                          distance: $width
+                                          });
+			house_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                    $house_pointer.filter('#house .current').removeClass('current');
+                                                    $house_pointer.eq(house_flipsnap.currentPoint).addClass('current');
+                                                    $house_text.filter('#house .current').removeClass('current');
+                                                    $house_text.eq(house_flipsnap.currentPoint).addClass('current');
+                                                    }, false);
+        </script>
+        <script>
+            var $cat_pointer = $('#cat .pointer span');
+			var $cat_text = $('#cat .text span');
+			var cat_flipsnap = Flipsnap('#cat .flipsnap', {
+                                          distance: $width
+                                          });
+			cat_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                    $cat_pointer.filter('#cat .current').removeClass('current');
+                                                    $cat_pointer.eq(cat_flipsnap.currentPoint).addClass('current');
+                                                    $cat_text.filter('#cat .current').removeClass('current');
+                                                    $cat_text.eq(cat_flipsnap.currentPoint).addClass('current');
+                                                    }, false);
+        </script>
+        <script>
+            var $dog_pointer = $('#dog .pointer span');
+			var $dog_text = $('#dog .text span');
+			var dog_flipsnap = Flipsnap('#dog .flipsnap', {
+                                        distance: $width
+                                        });
+			dog_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                  $dog_pointer.filter('#dog .current').removeClass('current');
+                                                  $dog_pointer.eq(dog_flipsnap.currentPoint).addClass('current');
+                                                  $dog_text.filter('#dog .current').removeClass('current');
+                                                  $dog_text.eq(dog_flipsnap.currentPoint).addClass('current');
+                                                  }, false);
+        </script>
+        <script>
+            var $flog_pointer = $('#flog .pointer span');
+			var $flog_text = $('#flog .text span');
+			var flog_flipsnap = Flipsnap('#flog .flipsnap', {
+                                        distance: $width
+                                        });
+			flog_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                  $flog_pointer.filter('#flog .current').removeClass('current');
+                                                  $flog_pointer.eq(flog_flipsnap.currentPoint).addClass('current');
+                                                  $flog_text.filter('#flog .current').removeClass('current');
+                                                  $flog_text.eq(flog_flipsnap.currentPoint).addClass('current');
+                                                  }, false);
+        </script>
+        <script>
+            var $goldfish_pointer = $('#goldfish .pointer span');
+			var $goldfish_text = $('#goldfish .text span');
+			var goldfish_flipsnap = Flipsnap('#goldfish .flipsnap', {
+                                        distance: $width
+                                        });
+			goldfish_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                  $goldfish_pointer.filter('#goldfish .current').removeClass('current');
+                                                  $goldfish_pointer.eq(goldfish_flipsnap.currentPoint).addClass('current');
+                                                  $goldfish_text.filter('#goldfish .current').removeClass('current');
+                                                  $goldfish_text.eq(goldfish_flipsnap.currentPoint).addClass('current');
+                                                  }, false);
+        </script>
+        <script>
+            var $car_pointer = $('#car .pointer span');
+			var $car_text = $('#car .text span');
+			var car_flipsnap = Flipsnap('#car .flipsnap', {
+                                        distance: $width
+                                        });
+			car_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                  $car_pointer.filter('#car .current').removeClass('current');
+                                                  $car_pointer.eq(car_flipsnap.currentPoint).addClass('current');
+                                                  $car_text.filter('#car .current').removeClass('current');
+                                                  $car_text.eq(car_flipsnap.currentPoint).addClass('current');
+                                                  }, false);
+        </script>
+        <script>
+            var $mola_pointer = $('#mola .pointer span');
+			var $mola_text = $('#mola .text span');
+			var mola_flipsnap = Flipsnap('#mola .flipsnap', {
+                                          distance: $width
+                                          });
+			mola_flipsnap.element.addEventListener('fsmoveend', function() {
+                                                    $mola_pointer.filter('#mola .current').removeClass('current');
+                                                    $mola_pointer.eq(mola_flipsnap.currentPoint).addClass('current');
+                                                    $mola_text.filter('#mola .current').removeClass('current');
+                                                    $mola_text.eq(mola_flipsnap.currentPoint).addClass('current');
+                                                    }, false);
+        </script>
+	</body>
+</html>

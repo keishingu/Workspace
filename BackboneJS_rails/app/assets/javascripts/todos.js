@@ -129,6 +129,7 @@ $(function() {
     close: function() {
       var value = this.input.val();
       if (!value) {
+        console.log(value);
         this.clear();
       } else {
         this.model.save({

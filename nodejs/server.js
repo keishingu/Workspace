@@ -1,4 +1,5 @@
 var http = require('http');
+var settings = require('./settings');
 var server = http.createServer();
 
 server.on('request', function(req, res) {
@@ -6,5 +7,6 @@ server.on('request', function(req, res) {
 	res.write('hello world');
 	res.end();
 });
-server.listen(1337, 'localhost');
+server.listen(settings.port, settings.host);
+console.log(settings.port, settings.host);
 console.log("server listening...");
